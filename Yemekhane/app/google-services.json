@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "475349643859",
+    "firebase_url": "https://refectory-84b81.firebaseio.com",
+    "project_id": "refectory-84b81",
+    "storage_bucket": "refectory-84b81.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475349643859:android:acdbd61ce2ebc98d",
+        "android_client_info": {
+          "package_name": "com.example.hulya.yemekhane"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "475349643859-0iakrm9g437o20pall33easgcjop5h92.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hulya.yemekhane",
+            "certificate_hash": "6ca45f5409b440b218e9502a7781bac6e84239e5"
+          }
+        },
+        {
+          "client_id": "475349643859-bhs499ha15vfjs9uqbo7m0p00vv9afto.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqx1yPHqBAmRtQ5akZEPVIHqNMOjUUKlo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "475349643859-bhs499ha15vfjs9uqbo7m0p00vv9afto.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

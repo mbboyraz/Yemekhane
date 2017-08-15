@@ -14,8 +14,9 @@ import java.util.ArrayList;
  * Created by hulya on 14.08.2017.
  */
 
-public class FoodListAdapter extends RecyclerView.Adapter {
+public class FoodListAdapter extends RecyclerView.Adapter<FoodListViewHolder> {
     private ArrayList<FoodListVM> foodList = null;
+
     public FoodListAdapter(RecyclerView recyclerView, ArrayList<FoodListVM> foodList) {
     }
 
@@ -24,16 +25,24 @@ public class FoodListAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_item_foodlist,parent,false);
+    public FoodListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_item_foodlist, parent, false);
 
         return new FoodListViewHolder(view);
     }
 
+
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(FoodListViewHolder holder, int position) {
         FoodListVM selectedFoodListVM = getItem(position);
+        holder.foodType.setText(selectedFoodListVM.getFoodType());
+        holder.txtFood1.setText(selectedFoodListVM.getFoodName1());
+        holder.cardView1.setBackgroundResource(selectedFoodListVM.getFoodImageLink1());
+        holder.txtFood2.setText(selectedFoodListVM.getFoodName2());
+        holder.cardView2.setBackgroundResource(selectedFoodListVM.getFoodImageLink2());
+        holder.txtFood3.setText(selectedFoodListVM.getFoodName3());
+        holder.cardView3.setBackgroundResource(selectedFoodListVM.getFoodImageLink3());
 
     }
 

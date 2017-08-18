@@ -1,6 +1,7 @@
 package com.example.hulya.yemekhane.ui;
 
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -29,9 +30,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import uk.co.senab.actionbarpulltorefresh.library.ActionBarPullToRefresh;
-import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
-
 
 /**
  * Created by hulya on 14.08.2017.
@@ -40,6 +38,7 @@ import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
 public class RecyclerViewActivity extends AppCompatActivity implements ValueEventListener {
 
     Toolbar toolbar;
+    SwipeRefreshLayout swiper;
     private RecyclerView rFoodList = null;
     private ArrayList<FoodListVM> foodList = null;
     private TextView txtDateInformation;
@@ -48,7 +47,6 @@ public class RecyclerViewActivity extends AppCompatActivity implements ValueEven
     private String day;
     private int i = 1;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +54,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements ValueEven
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         txtDateInformation = (TextView) findViewById(R.id.txtDateInformation);
         toolbar.setTitleTextColor(Color.WHITE);
-
+        swiper = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
 
         Firebase.setAndroidContext(this);
         setSupportActionBar(toolbar);
@@ -99,6 +97,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements ValueEven
 
         List<Map<String, List<FoodListVM>>> mapListfoodList = new ArrayList<>();
         Map<String, List<FoodListVM>> map1 = new HashMap<>();
+
         List<FoodListVM> foodList = new ArrayList<>();
 
 
@@ -140,7 +139,8 @@ public class RecyclerViewActivity extends AppCompatActivity implements ValueEven
         map1.put(day,foodList);
         mapListfoodList.add(map1);
 
-        FoodListAdapter foodListAdapter = new FoodListAdapter((ArrayList<FoodListVM>) foodList);
+        Context context = null;
+        FoodListAdapter foodListAdapter = new FoodListAdapter((ArrayList<FoodListVM>) foodList, swiper, this);
 
         rFoodList.setAdapter(foodListAdapter);
     }

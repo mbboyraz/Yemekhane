@@ -1,5 +1,8 @@
 package com.example.hulya.yemekhane.adapter;
 
+import android.content.Context;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +18,16 @@ import java.util.ArrayList;
  */
 
 public class FoodListAdapter extends RecyclerView.Adapter<FoodListViewHolder> {
+    SwipeRefreshLayout swiper;
+    Context context;
     private ArrayList<FoodListVM> foodList = null;
+
+
+    public FoodListAdapter(ArrayList<FoodListVM> foodList, SwipeRefreshLayout swiper, Context context) {
+        this.foodList = foodList;
+        this.swiper = swiper;
+        this.context = context;
+    }
 
     public FoodListAdapter(RecyclerView recyclerView, ArrayList<FoodListVM> foodList) {
     }
@@ -23,6 +35,7 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListViewHolder> {
     public FoodListAdapter(ArrayList<FoodListVM> foodList) {
         this.foodList = foodList;
     }
+
 
     @Override
     public FoodListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -44,12 +57,43 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListViewHolder> {
         holder.txtFood3.setText(selectedFoodListVM.getFoodName3());
         holder.cardView3.setBackgroundResource(selectedFoodListVM.getFoodImageLink3());
 
+        swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                foodList.clear();
+                notifyDataSetChanged();
+                refresh();
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return foodList.size();
     }
+
+    private void refresh() {
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                //ArrayList<FoodListVM> foodList = new ArrayList<>();
+
+                //foodList.add(0,foodList.get(new Random().nextInt(foodList.size())));
+                addall(foodList);
+                FoodListAdapter.this.notifyDataSetChanged();
+                swiper.setRefreshing(false);
+            }
+        }, 1000);
+    }
+
+    private void addall(ArrayList<FoodListVM> foodList) {
+
+        foodList.addAll(foodList);
+
+    }
+
     private FoodListVM getItem(int position){
         return foodList.get(position);
     }

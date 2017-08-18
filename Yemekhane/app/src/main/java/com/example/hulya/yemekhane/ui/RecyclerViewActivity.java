@@ -38,7 +38,7 @@ import java.util.Map;
 public class RecyclerViewActivity extends AppCompatActivity implements ValueEventListener {
 
     //variables define
-    private ArrayList<FoodListVM> foodList = new ArrayList<>();
+    private ArrayList<FoodListVM> foodList ;
     private ArrayList<String> dates_spinner=new ArrayList<>();
     private String day;
     private int i=1;
@@ -78,6 +78,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements ValueEven
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 foodListRef = new Firebase("https://refectory-84b81.firebaseio.com/");
+                foodList=new ArrayList<FoodListVM>();
                 switch (position){
                     case 0:
                         day="Day1";
@@ -192,13 +193,8 @@ public class RecyclerViewActivity extends AppCompatActivity implements ValueEven
     public void onDataChange(DataSnapshot dataSnapshot) {
 
         dates_spinner.add(dataSnapshot.child("Date").getValue().toString());
-
-
         spAdapter=new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, dates_spinner);
         spinner.setAdapter(spAdapter);
-
-
-
         i++;
         if (i<8)
             GetData(i);

@@ -78,7 +78,7 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListViewHolder> {
 
             @Override
             public void run() {
-                //ArrayList<FoodListVM> foodList = new ArrayList<>();
+                ArrayList<FoodListVM> foodList = new ArrayList<>();
 
                 //foodList.add(0,foodList.get(new Random().nextInt(foodList.size())));
                 addall(foodList);

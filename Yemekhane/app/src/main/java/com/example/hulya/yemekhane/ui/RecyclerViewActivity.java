@@ -73,7 +73,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements ValueEven
         Firebase.setAndroidContext(this);
         dateInformation();
 
-        GetData(i);
+        getData(i);
         swiper.setOnRefreshListener(this);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -222,13 +222,14 @@ public class RecyclerViewActivity extends AppCompatActivity implements ValueEven
         spinner.setSelection(spinner_position);
 
         if (i<8)
-            GetData(i);
+            getData(i);
     }
 
     @Override
     public void onCancelled(FirebaseError firebaseError) {
     }
-    public void GetData(int i){
+
+    public void getData(int i) {
         foodListRef = new Firebase("https://fooddata-e0a85.firebaseio.com/");
         switch (i)
         {
@@ -267,7 +268,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements ValueEven
             public void run() {
                 i = 1;
                 dates_spinner.clear();
-                GetData(i);
+                getData(i);
                 swiper.setRefreshing(false);
 
             }

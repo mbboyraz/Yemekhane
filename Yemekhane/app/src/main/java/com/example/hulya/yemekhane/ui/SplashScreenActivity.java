@@ -269,7 +269,7 @@ public class SplashScreenActivity extends Activity {
         });
 
         // Loading image with placeholder and error image
-        imageLoader.get(imageURL, ImageLoader.getImageListener(imgNetWorkView, R.mipmap.placeholder_rev, R.drawable.ico_error));
+        imageLoader.get(imageURL, ImageLoader.getImageListener(imgNetWorkView, R.drawable.placeholder_rev, R.drawable.ico_error));
 
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
         Cache.Entry entry = cache.get(imageURL);

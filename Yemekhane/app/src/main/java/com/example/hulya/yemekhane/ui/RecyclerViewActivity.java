@@ -345,9 +345,3 @@ public class RecyclerViewActivity extends AppCompatActivity implements SwipeRefr
         });
     }
 }
-
-
-
-
-
-
